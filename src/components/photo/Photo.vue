@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
     export default {
         props: {
             photo: {
@@ -22,8 +23,10 @@
             }
         },
         methods: {
+            ...mapMutations(['setCurrentPhoto', 'showDialog', 'hideDialog']),
             openPhoto() {
-                this.$emit('openPhoto', this.photo)
+                this.setCurrentPhoto(this.photo)
+                this.showDialog()
             }
         }
     }
